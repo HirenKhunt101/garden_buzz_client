@@ -3,9 +3,12 @@ import { Link } from "react-router-dom";
 import "./login.css";
 // import Register from "../Register/SellerRegister";
 import { UserData } from "../SystemSetup/UserData";
-const user_path = new UserData().getData('path');
+import { useNavigate } from "react-router-dom";
+
 
 const Login = () => {
+  const navigate = useNavigate();
+  const user_path = new UserData().getData('path');
   // let u  = new UserData();
   // console.log(u.getData('token'));
 
@@ -41,7 +44,12 @@ const Login = () => {
       alert("Login successful");
       // window.location.href = "/home";
       console.log(user_path);
-      window.location.href = user_path ? user_path : '/home';
+      // window.location.href = user_path ? user_path : '/home';
+      if(user_path) {
+        navigate(user_path);
+      }else {
+        navigate("/home");
+      }
     } else {
       alert("Please check your username and password");
     }

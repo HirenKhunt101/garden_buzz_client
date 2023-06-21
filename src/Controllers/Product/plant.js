@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./plant.css";
 import { UserData } from "../SystemSetup/UserData";
-const user_data = new UserData().getData('token');
+import { useNavigate } from "react-router-dom";
 
 function Plant() {
+  const navigate = useNavigate();
+  const user_data = new UserData().getData('token');
   const [imageMap, setImageMap] = useState({});
   const [productData, setProductData] = useState([]);
   const [cartItems, setCartItems] = useState([]);
@@ -55,7 +57,7 @@ function Plant() {
           }
         );
         const CartData = await response1.json();
-        // console.log(CartData.data);
+        console.log(CartData.data);
         setCartItems(CartData.data);
       } catch (error) {
         // console.error("Error in fetching product data:", error);
@@ -90,7 +92,8 @@ function Plant() {
     }
     else {
       localStorage.setItem("path", JSON.stringify("/plant"));
-      window.location.href ='/login';
+      // window.location.href ='/login';
+      navigate("/login");
     }
    
   };

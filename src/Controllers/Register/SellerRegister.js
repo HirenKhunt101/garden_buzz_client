@@ -66,8 +66,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./../Login/login.css";
+import { useNavigate } from "react-router-dom";
+
 
 const Register = () => {
+  const navigate = useNavigate();
   const [nurseryname, setName] = useState("");
   const [email, setEmail] = useState("");
   const [contactnumber, setContact] = useState("");
@@ -109,7 +112,8 @@ const Register = () => {
     if (data.status === "ok") {
       console.log("Data Add successfully");
       alert(data.message);
-      window.location.href = '/login';
+      // window.location.href = '/login';
+      navigate("/login"); 
     }
     else {
       alert(data.message)

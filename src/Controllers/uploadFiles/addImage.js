@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from "./firebase";
 import { UserData } from "../SystemSetup/UserData";
-const user_data = new UserData().getData('token');
+import { useNavigate } from "react-router-dom";
+
 
 function AddImage() {
+  const navigate = useNavigate();
+  const user_data = new UserData().getData('token');
+
   const [imageUpload, setImageUpload] = useState(null);
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
@@ -42,7 +46,9 @@ function AddImage() {
     );
     const data = await response.json();
     alert("Product Uploaded Successfully!");
-    window.location.href = "/Upload";
+    // window.location.href = "/Upload";
+    navigate("/Upload");
+
   };
 
   return (

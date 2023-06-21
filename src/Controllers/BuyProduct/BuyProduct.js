@@ -35,7 +35,7 @@ function BuyProduct() {
         );
         const data = await response.json();
         setProductData(data.data);
-        console.log(data.data);
+        // console.log(data.data);
       } catch (error) {
         console.error("Error fetching product data:", error);
       }
@@ -56,7 +56,7 @@ function BuyProduct() {
           }
         );
         const CartData = await response1.json();
-        console.log(CartData.data);
+        // console.log(CartData.data);
         setCartItems(CartData.data);
       } catch (error) {
         console.error("Error in fetching product data:", error);
@@ -94,7 +94,7 @@ function BuyProduct() {
 
   const removeFromCart = async (productId) => {
     setCartItems(cartItems.filter((item) => item._id !== productId));
-    console.log(123);
+    // console.log(123);
     let body = JSON.stringify({
       ProductId: productId,
     });
@@ -108,7 +108,7 @@ function BuyProduct() {
         body: body,
       }
     );
-    console.log(response);
+    // console.log(response);
     if (response.ok) {
       alert("Product Removed successfully!");
     }

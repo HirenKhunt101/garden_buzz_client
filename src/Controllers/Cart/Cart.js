@@ -2,14 +2,16 @@ import { useState, useEffect } from "react";
 // import { Link } from "react-router-dom";
 import "./Cart.css";
 import { UserData } from "../SystemSetup/UserData";
-const user_data = new UserData().getData('token');
+import { useNavigate } from "react-router-dom";
+
 
 function Cart() {
-  console.log(process.env);
-
+  const navigate = useNavigate();
+  const user_data = new UserData().getData('token');
   if(!user_data) {
     localStorage.setItem("path", JSON.stringify("/Cart"));
-    window.location.href = '/login';
+    // window.location.href = '/login';
+    navigate("/login");
   }
 
   const [imageMap, setImageMap] = useState({});
@@ -47,7 +49,9 @@ function Cart() {
     const data = await response.json();
     if (data.ok) {
       alert(data.message);
-      window.location.href = "/home";
+      // window.location.href = "/home";
+      navigate("/home");
+
     }
   };
 
@@ -67,7 +71,7 @@ function Cart() {
           }
         );
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         let totalPrice = 0;
         for (let pro of data.data) {
           totalPrice += Number(pro.Price * pro.ProductQuantity);
@@ -75,17 +79,17 @@ function Cart() {
         setPrice(totalPrice);
         setProductData(data.data);
         if(data.data.length > 0) {
-          setDeliveryCharges(40);
-          setDeliveryCharges(10 * data.data.length)
+          // setDeliveryCharges(40);
+          setDeliveryCharges(10 * Number(data.data.length))
         }
-        console.log(totalPrice);
+        // console.log(totalPrice);
       } catch (error) {
         console.error("Error fetching product data:", error);
       }
     };
 
     fetchData();
-  }, [imageMap]);
+  }, [imageMap, cartItems]);
 
   const addToCart = async (product) => {
     setCartItems([...cartItems, product]);
@@ -101,7 +105,7 @@ function Cart() {
         }),
       }
     );
-    console.log(response);
+    // console.log(response);
     if (response.ok) {
       alert("Product added successfully!");
     }
@@ -111,11 +115,13 @@ function Cart() {
     return cartItems.some((item) => item._id === productId);
   };
 
-  const removeFromCart = async (productId) => {
-    setCartItems(cartItems.filter((item) => item._id !== productId));
+  const removeFromCart = async (product) => {
+    // setCartItems(cartItems.filter((item) => item._id !== productId));
+    setProductData(productData.filter((item) => item._id !== product._id));
+    setPrice(price - product.Price * product.ProductQuantity)
     console.log(123);
     let body = JSON.stringify({
-      ProductId: productId,
+      ProductId: product._id,
     });
     const response = await fetch(
       `${process.env.REACT_APP_BACKEND_URL}/gardenbuzz/remove_product_from_cart`,
@@ -127,11 +133,13 @@ function Cart() {
         body: body,
       }
     );
-    console.log(response);
+    // console.log(response);
     if (response.ok) {
       alert("Product Removed successfully!");
     }
-    window.location.href = "/Cart";
+    // window.location.href = "/Cart";
+    navigate("/Cart");
+
   };
 
   const handleIncrement = async (productId) => {
@@ -235,7 +243,7 @@ function Cart() {
                   <p>Total: ₹{product.Price * product.ProductQuantity}</p>
                   <button
                     className="removeFromCart"
-                    onClick={() => removeFromCart(product._id)}
+                    onClick={() => removeFromCart(product)}
                   >
                     Remove From Cart
                   </button>
@@ -272,11 +280,12 @@ function Cart() {
                 </div>
                 <div className="priceCalculationItem">
                   <span className="itemName">Discount:</span>
-                  <span className="itemValue">₹{price % 100}</span>
+                  <span className="itemValue">₹{price % 50}</span>
                 </div>
                 <div className="priceCalculationItem">
                   <span className="itemName">Delivery Charges:</span>
-                  <span className="itemValue">₹{deliveryCharges}</span>
+                  {/* <span className="itemValue">₹{deliveryCharges}</span> */}
+                  <span className="itemValue">₹{10 * productData.length}</span>
                 </div>
                 <div className="priceCalculationItem">
                   <span className="itemName">Secured Packaging Fee:</span>
@@ -285,7 +294,7 @@ function Cart() {
                 <div className="priceCalculationItem">
                   <span className="itemName">Total:</span>
                   <span className="itemValue">
-                    ₹{price - (price % 100) + packagingFee + deliveryCharges}
+                    ₹{price - (price % 50) + packagingFee + 10 * productData.length}
                   </span>
                 </div>
               </div>

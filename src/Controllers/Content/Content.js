@@ -8,10 +8,9 @@ import "./content.css";
 // } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { UserData } from "../SystemSetup/UserData";
-const user_data = new UserData().getData('token');
 
 const Content = () => {
-
+  const user_data = new UserData().getData('token');
   const handleWantToSell = () => {
     // Set the path in localStorage
     localStorage.setItem("path", JSON.stringify("/Upload"));
