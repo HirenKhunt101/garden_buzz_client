@@ -3,11 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import "./sellerProduct.css";
 import { UserData } from "../SystemSetup/UserData";
 const Userdata = new UserData();
+import Loading from "../SystemSetup/Loading";
+
 function Upload() {
   const [imageMap, setImageMap] = useState({});
   const [productData, setProductData] = useState([]);
-  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
 
+  const navigate = useNavigate();
   const handleImageError = (url) => {
     const newImageMap = { ...imageMap };
     delete newImageMap[url];
@@ -34,6 +37,7 @@ function Upload() {
           );
           const data = await response.json();
           setProductData(data.data);
+          setLoading(false);
         }
         else {
           navigate("/Login");
@@ -56,6 +60,7 @@ function Upload() {
           Add Product
         </Link>
       </div>
+      {loading && <Loading/>}
       <div className="productContainer">
         <div className="image-Container">
           {Array.isArray(productData) ? (
