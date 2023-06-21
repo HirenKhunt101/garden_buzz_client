@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./plant.css";
 import { UserData } from "../SystemSetup/UserData";
 import { useNavigate } from "react-router-dom";
+import Loading from "../SystemSetup/Loading";
 
 function Plant() {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ function Plant() {
   const [productData, setProductData] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const handleImageError = (url) => {
     const newImageMap = { ...imageMap };
@@ -36,6 +38,7 @@ function Plant() {
         );
         const data = await response.json();
         setProductData(data.data);
+        setLoading(false);
         // console.log(data.data);
       } catch (error) {
         // console.error("Error fetching product data:", error);
@@ -185,7 +188,7 @@ function Plant() {
             />
           </div>
         </div>
-
+        {loading && <Loading/>}
         <div className="productContainer">
           <div className="imageContainer">
             {Array.isArray(filteredProducts) ? (

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import "./Cart.css";
 import { UserData } from "../SystemSetup/UserData";
 import { useNavigate } from "react-router-dom";
-
+import Loading from "../SystemSetup/Loading";
 
 function Cart() {
   const navigate = useNavigate();
@@ -25,6 +25,8 @@ function Cart() {
   const [address, setAddress] = useState("");
   const [pincode, setPincode] = useState("");
   const [mobile, setMobile] = useState("");
+  const [loading, setLoading] = useState(true);
+
 
   const handleImageError = (url) => {
     const newImageMap = { ...imageMap };
@@ -82,6 +84,7 @@ function Cart() {
           // setDeliveryCharges(40);
           setDeliveryCharges(10 * Number(data.data.length))
         }
+        setLoading(false);
         // console.log(totalPrice);
       } catch (error) {
         console.error("Error fetching product data:", error);
@@ -209,6 +212,7 @@ function Cart() {
       <img src="assets/images/vertical_line.png" class="line ml-4" />
       <h4 className="heading_text">Cart</h4>
     </div> */}
+      {loading && <Loading/>}
       <div className="productContainer">
         <div className="imageContainer">
           {Array.isArray(productData) ? (
