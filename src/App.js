@@ -23,6 +23,7 @@ import Vine from "./Controllers/Product/vine";
 import PlantCareProduct from "./Controllers/Product/plantCare";
 import Fertilizer from "./Controllers/Product/fertilizer";
 import Chatbox from "./Controllers/ChatBox/ChatBox";
+import Product from "./Controllers/Product/product";
 function App() {
   return (
     <BrowserRouter>
@@ -43,6 +44,8 @@ function App() {
         <Route path="Fertilizer" element={ <>  <Navbar /> <Fertilizer /> <Footer /> </> } />
         <Route path="Cart" element={  <><Navbar /> <Cart /> <Footer /> </>  } />
         <Route path="Chatbox" element={  <><Navbar /> <Chatbox /> <Footer /> </>  } />
+
+        <Route path="Product/:Category" element={  <><Navbar /> <Product /> <Footer /> </>  } />
       </Routes>
     </BrowserRouter>
 

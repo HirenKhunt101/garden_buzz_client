@@ -46,7 +46,7 @@ const Navbar = () => {
               </li>
               <li className="nav__item">
                 <Link
-                  to="/Plant"
+                  to="/Product/plant"
                   className={`nav__link ${
                     activeLink === "Plant" ? "active-link" : ""
                   }`}
@@ -58,7 +58,7 @@ const Navbar = () => {
 
               <li className="nav__item">
                 <Link
-                  to="/Flower"
+                  to="/Product/flower"
                   className={`nav__link ${
                     activeLink === "Flower" ? "active-link" : ""
                   }`}
@@ -69,7 +69,7 @@ const Navbar = () => {
               </li>
               <li className="nav__item">
                 <Link
-                  to="/Vine"
+                  to="/Product/vine"
                   className={`nav__link ${
                     activeLink === "Vine" ? "active-link" : ""
                   }`}
@@ -80,7 +80,7 @@ const Navbar = () => {
               </li>
               <li className="nav__item">
                 <Link
-                  to="/PlantCareProduct"
+                  to="/Product/plantcare"
                   className={`nav__link ${
                     activeLink === "Plant Care" ? "active-link" : ""
                   }`}
@@ -91,7 +91,7 @@ const Navbar = () => {
               </li>
               <li className="nav__item">
                 <Link
-                  to="/Fertilizer"
+                  to="/Product/fertilizer"
                   className={`nav__link ${
                     activeLink === "Fertilizer" ? "active-link" : ""
                   }`}
