@@ -150,3 +150,15 @@ button:active
   background-color: white;
   border: none;
 }
+
+
+.moreInfo{
+  padding: 3px 5px 2px 5px;
+  border-radius: 4px;
+}
+.moreInfo:hover {
+  /* box-shadow: 1px 1px 25px 10px rgba(146, 148, 248, 0.4); */
+  background-color:rgb(195, 218, 195);
+  padding: 3px 5px 2px 5px;
+  border-radius: 4px;
+}

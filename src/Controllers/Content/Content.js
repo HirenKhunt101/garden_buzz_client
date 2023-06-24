@@ -110,7 +110,7 @@ const Content = () => {
                 </p>
               </div>
 
-              <a href="#" className="button--link button--flex">
+              <a href="/Product/plant" className="button--link button--flex">
                 Shop Now{" "}
                 <i className="ri-arrow-right-down-line button__icon"></i>
               </a>
@@ -157,7 +157,7 @@ const Content = () => {
 
         {/* <!--==================== PRODUCTS ====================--> */}
         <section className="product section container" id="products">
-          <h2 className="section__title-center">Check out our products</h2>
+          <h2 className="section__title-center">top products</h2>
 
           <p className="product__description">
             Here are some selected plants from our showroom, all are in
@@ -440,7 +440,7 @@ const Content = () => {
         {/* <!--==================== CONTACT ====================--> */}
         <section className="contact section container" id="contact">
           <div className="contact__container grid">
-            <div className="contact__box">
+            {/* <div className="contact__box">
               <h2 className="section__title">Reach out to us </h2>
 
               <div className="contact__data">
@@ -462,7 +462,7 @@ const Content = () => {
                   </span>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             {/* <form action="" className="contact__form">
                         <div className="contact__inputs">

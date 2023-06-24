@@ -187,7 +187,7 @@ h2 {
   }
 
   .home {
-    padding: 0rem 0 5rem;
+    padding: 0rem 0 0rem;
   }
 
   .home__container {
@@ -233,7 +233,7 @@ h2 {
   }
 
   .home {
-    padding: 0rem 0 5rem;
+    padding: 0rem 0 0rem;
   }
 
   .home__img {
@@ -316,9 +316,9 @@ h2 {
     grid-template-columns: 1fr .5fr .5fr .5fr;
   }
 
-  .footer__copy {
+  /* .footer__copy {
     margin: 7rem 0 2rem;
-  }
+  } */
 }
 
 @media screen and (min-width: 1200px) {

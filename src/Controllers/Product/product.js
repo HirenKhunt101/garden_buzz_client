@@ -4,8 +4,9 @@ import "./product.css";
 import { UserData } from "../SystemSetup/UserData";
 import { useNavigate } from "react-router-dom";
 import Loading from "../SystemSetup/Loading";
+import ProductDetail from "./productDetail";
 
-function Product(props) {
+function Product() {
 //   const Category = props.Category;
   const { Category } = useParams();
   console.log(Category);
@@ -24,6 +25,7 @@ function Product(props) {
   };
 
   useEffect(() => {
+    console.log(process.env.REACT_APP_BACKEND_URL);
     const fetchData = async () => {
       try {
         const response = await fetch(
@@ -134,6 +136,11 @@ function Product(props) {
     setSearchTerm(event.target.value);
   };
 
+  const handleProductDetail = (product) => {
+    // <ProductDetail Details={product} />
+    navigate(`${product._id}`)
+  };
+
   const filteredProducts = productData.filter((product) =>
     product.Name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -210,9 +217,9 @@ function Product(props) {
                     </p>
                     <p>Price: ₹{product.Price}</p>
                     {/* <p>Quantity: {product.ProductQuantity}</p> */}
-                    <a href="#" class="moreInfo">
+                    <button className="moreInfo" onClick={() => handleProductDetail(product)}>
                       More Information
-                    </a>
+                    </button>
                     {/* <Link to={`/Chatbox?sellerId=${product.UserId}`}
                       className="moreInfo"
                     >

@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <>
       {/* <!--==================== FOOTER ====================--> */}
-      <footer class="footer section">
+      <footer class="footer-section">
         <hr />
         <div class="footer__container container grid">
           <div class="footer__content">

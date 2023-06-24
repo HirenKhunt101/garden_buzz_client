@@ -15,46 +15,34 @@ import Login from "./Controllers/Login/Login";
 import Register from "./Controllers/Register/SellerRegister";
 import Upload from "./Controllers/uploadFiles/sellerProducts";
 import AddImage from "./Controllers/uploadFiles/addImage";
-import BuyProduct from "./Controllers/BuyProduct/BuyProduct";
 import Plant from "./Controllers/Product/plant";
 import Cart from "./Controllers/Cart/Cart";
-import Flower from "./Controllers/Product/flower";
-import Vine from "./Controllers/Product/vine";
-import PlantCareProduct from "./Controllers/Product/plantCare";
-import Fertilizer from "./Controllers/Product/fertilizer";
 import Chatbox from "./Controllers/ChatBox/ChatBox";
 import Product from "./Controllers/Product/product";
+import ProductDetail from "./Controllers/Product/productDetail";
+
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-      <Route path="home" element={<div className="home"><Navbar /><Content /><Footer /></div>} />
+        <Route path="home" element={<div className="home"><Navbar /><Content /><Footer /></div>} />
         <Route path="/" element={ <div className="home"><Navbar /><Content /><Footer /></div>}/>
-        <Route path="Sellform" element={ <div className="Sellform"> <><Navbar /><Sellform /><Footer /></></div>}/>
-        
         <Route path="addImage" element={<div className="addimage"><Navbar /><AddImage /><Footer /></div> } />
         <Route path="Upload" element={ <div className="Upload"> <Navbar /> <Upload />  <Footer />  </div>  }  />
         <Route path="login" element={  <div className="Login"> <Navbar /> <Login />  </div>  }  />
         <Route path="register"element={  <div className="Register"> <Navbar /> <Register /> </div> }  />
-
-        <Route path="Plant" element={ <>  <Navbar /> <Plant /> <Footer /> </> } />
-        <Route path="Flower" element={ <>  <Navbar /> <Flower /> <Footer /> </> } />
-        <Route path="Vine" element={ <>  <Navbar /> <Vine /> <Footer /> </> } />
-        <Route path="PlantCareProduct" element={ <>  <Navbar /> <PlantCareProduct /> <Footer /> </> } />
-        <Route path="Fertilizer" element={ <>  <Navbar /> <Fertilizer /> <Footer /> </> } />
         <Route path="Cart" element={  <><Navbar /> <Cart /> <Footer /> </>  } />
+        <Route path="Product/:Category" element={  <><Navbar /> <Product /> <Footer /> </>  } />        
+        <Route path="Product/:id/:id" element={  <><Navbar /> <ProductDetail/>  </>  } />        
+
+        {/* Currently Not In Use */}
+        <Route path="Sellform" element={ <div className="Sellform"> <><Navbar /><Sellform /><Footer /></></div>}/>
+        <Route path="Plant" element={ <>  <Navbar /> <Plant /> <Footer /> </> } />
         <Route path="Chatbox" element={  <><Navbar /> <Chatbox /> <Footer /> </>  } />
 
-        <Route path="Product/:Category" element={  <><Navbar /> <Product /> <Footer /> </>  } />
       </Routes>
     </BrowserRouter>
-
-    // <div className="home">
-    // <Navbar />
-    // <Content />
-    // <Sellform />
-    // <Footer />
-    // </div>
   );
 }
 

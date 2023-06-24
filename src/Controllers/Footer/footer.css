@@ -5,3 +5,12 @@
     margin-left: 0rem;
     margin-top: 1rem;
   }
+
+  .footer-section{
+    height: fit-content;
+    margin-top: 10rem;
+  }
+
+  .footer__copy{
+    margin: 0px;
+  }

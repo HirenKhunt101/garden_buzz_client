@@ -81,8 +81,8 @@ function Cart() {
         setPrice(totalPrice);
         setProductData(data.data);
         if(data.data.length > 0) {
-          // setDeliveryCharges(40);
-          setDeliveryCharges(10 * Number(data.data.length))
+          setDeliveryCharges(40);
+          setPackagingFee(10 * Number(data.data.length))
         }
         setLoading(false);
         // console.log(totalPrice);
@@ -120,6 +120,9 @@ function Cart() {
 
   const removeFromCart = async (product) => {
     // setCartItems(cartItems.filter((item) => item._id !== productId));
+    if(productData.length <= 1) {
+      setDeliveryCharges(0);
+    }
     setProductData(productData.filter((item) => item._id !== product._id));
     setPrice(price - product.Price * product.ProductQuantity)
     console.log(123);
@@ -289,16 +292,16 @@ function Cart() {
                 <div className="priceCalculationItem">
                   <span className="itemName">Delivery Charges:</span>
                   {/* <span className="itemValue">₹{deliveryCharges}</span> */}
-                  <span className="itemValue">₹{10 * productData.length}</span>
+                  <span className="itemValue">₹{deliveryCharges}</span>
                 </div>
                 <div className="priceCalculationItem">
                   <span className="itemName">Secured Packaging Fee:</span>
-                  <span className="itemValue">₹{packagingFee}</span>
+                  <span className="itemValue">₹{10 * productData.length}</span>
                 </div>
                 <div className="priceCalculationItem">
                   <span className="itemName">Total:</span>
                   <span className="itemValue">
-                    ₹{price - (price % 50) + packagingFee + 10 * productData.length}
+                    ₹{price - (price % 50) + deliveryCharges + 10 * productData.length}
                   </span>
                 </div>
               </div>
