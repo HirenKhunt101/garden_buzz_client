@@ -428,7 +428,7 @@ const Content = () => {
 
               {/* <div className="buysell__card">  */}
               <div className="buttoncontainer">
-                <Link to="/Plant" className="sellbtn">
+                <Link to="/Product/plant" className="sellbtn">
                   WANT TO BUY
                 </Link>
               </div>
