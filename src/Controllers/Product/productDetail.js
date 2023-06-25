@@ -168,8 +168,8 @@ function ProductDetail() {
     {loading && <Loading/>}
     <div className="description">
       <div className="back-icon">
-        <h3 className="back-button" onClick={() => handleBackClick(ProductDetail.Category)}>Back</h3>
-        <button className="back-button" onClick={() => handleBackClick(ProductDetail.Category)} >
+        <h3 className="back-button-text" onClick={() => handleBackClick(ProductDetail.Category)}>Back</h3>
+        <button className="back-button-button" onClick={() => handleBackClick(ProductDetail.Category)} >
           <FaChevronLeft size={24} color="black"/> 
         </button>
       </div>
