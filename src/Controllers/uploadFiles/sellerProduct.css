@@ -1,5 +1,5 @@
 
-.productImage{
+.ProductImage{
     width: 250px;
     height: 250px;
     /* padding-left: 20px;
@@ -7,6 +7,7 @@
     /* margin-top: 10px; */
     /* margin-left: 20px; */
     border-style:hidden;
+    cursor: default;
   }
   
   .image-Container{

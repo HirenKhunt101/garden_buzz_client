@@ -69,7 +69,7 @@ function Upload() {
                 <img
                   src={product.ImageURL}
                   alt={product.Name}
-                  className="productImage"
+                  className="ProductImage"
                   onError={() => handleImageError(product.ImageURL)}
                 />
                 {/* <div className="productDetails"> */}

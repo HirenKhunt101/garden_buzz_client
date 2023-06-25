@@ -4,6 +4,9 @@ import "./productDetail.css";
 import { UserData } from "../SystemSetup/UserData";
 import { useNavigate } from "react-router-dom";
 import Loading from "../SystemSetup/Loading";
+import {
+  FaChevronLeft,
+} from "react-icons/fa";
 
 function ProductDetail() {
   const product = useParams();
@@ -70,6 +73,12 @@ function ProductDetail() {
 
     fetchData();
   }, [imageMap]);
+
+  const handleBackClick = (Category) => {
+    navigate(`../../Product/${Category}`)
+    console.log(Category);
+  };
+
 
   const addToCart = async (productId) => {
     if(user_data) {
@@ -158,6 +167,12 @@ function ProductDetail() {
     </div>
     {loading && <Loading/>}
     <div className="description">
+      <div className="back-icon">
+        <h3 className="back-button" onClick={() => handleBackClick(ProductDetail.Category)}>Back</h3>
+        <button className="back-button" onClick={() => handleBackClick(ProductDetail.Category)} >
+          <FaChevronLeft size={24} color="black"/> 
+        </button>
+      </div>
       <h2>{ProductDetail.Name}</h2>
       {/* <h4>Popular House Plant</h4> */}
       <h1>{ProductDetail.Price}₹</h1>

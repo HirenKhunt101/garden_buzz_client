@@ -5,6 +5,9 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import { UserData } from "../SystemSetup/UserData";
 const user_data = new UserData();
+import {
+  FaShoppingCart,
+} from "react-icons/fa";
 
 const Navbar = () => {
   const [activeLink, setActiveLink] = useState("");
@@ -134,6 +137,7 @@ const Navbar = () => {
                 </a>
               </li> */}
               <li className="nav__item">
+               
                 <Link
                   to="/Cart"
                   className={`nav__link ${
@@ -141,7 +145,8 @@ const Navbar = () => {
                   }`}
                   onClick={() => handleLinkClick("Cart")}
                 >
-                  Cart
+                {/* <FaShoppingCart size={24} color="black"/> */}
+                <FaShoppingCart size={24} color="black"/>
                 </Link>
               </li>
               {/* <li className="nav__item">

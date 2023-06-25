@@ -70,8 +70,8 @@ button:active
   display: flex;
   flex-wrap: wrap;
   margin: 0px 77px;
-  height: 570px;
-  overflow-y: scroll;
+  /* height: 570px;
+  overflow-y: scroll; */
 }
 
 .productCard {
