@@ -7,6 +7,7 @@
     /* margin-top: 10px; */
     /* margin-left: 20px; */
     border-style:hidden;
+    cursor: pointer;
   }
   
 button:active
@@ -68,7 +69,9 @@ button:active
 .imageContainer {
   display: flex;
   flex-wrap: wrap;
-  margin: 0px 77px
+  margin: 0px 77px;
+  height: 570px;
+  overflow-y: scroll;
 }
 
 .productCard {

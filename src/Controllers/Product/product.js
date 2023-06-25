@@ -25,7 +25,6 @@ function Product() {
   };
 
   useEffect(() => {
-    console.log(process.env.REACT_APP_BACKEND_URL);
     const fetchData = async () => {
       try {
         const response = await fetch(
@@ -36,7 +35,6 @@ function Product() {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              // imageUrls: Object.keys(imageMap),
               Category: Category,
             }),
           }
@@ -44,9 +42,8 @@ function Product() {
         const data = await response.json();
         setProductData(data.data);
         setLoading(false);
-        // console.log(data.data);
       } catch (error) {
-        // console.error("Error fetching product data:", error);
+        console.error("Error fetching product data:", error);
       }
     };
 
@@ -65,10 +62,9 @@ function Product() {
           }
         );
         const CartData = await response1.json();
-        console.log(CartData.data);
         setCartItems(CartData.data);
       } catch (error) {
-        // console.error("Error in fetching product data:", error);
+        console.error("Error in fetching product data:", error);
       }
     };
 
@@ -93,7 +89,6 @@ function Product() {
           }),
         }
       );
-      // console.log(response);
       if (response.ok) {
         alert("Product added successfully!");
       }
@@ -112,7 +107,6 @@ function Product() {
 
   const removeFromCart = async (productId) => {
     setCartItems(cartItems.filter((item) => item._id !== productId));
-    // console.log(123);
     let body = JSON.stringify({
       ProductId: productId,
     });
@@ -126,7 +120,6 @@ function Product() {
         body: body,
       }
     );
-    // console.log(response);
     if (response.ok) {
       alert("Product Removed successfully!");
     }
@@ -209,6 +202,7 @@ function Product() {
                     alt={product.Name}
                     className="productImage"
                     onError={() => handleImageError(product.ImageURL)}
+                    onClick={() => handleProductDetail(product)}
                   />
                   <div className="productDetails">
                     <h3>{product.Name}</h3>

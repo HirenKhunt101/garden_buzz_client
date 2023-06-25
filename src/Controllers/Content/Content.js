@@ -110,10 +110,11 @@ const Content = () => {
                 </p>
               </div>
 
-              <a href="/Product/plant" className="button--link button--flex">
+              {/* <a href="Product/plant" className="button--link button--flex">
                 Shop Now{" "}
                 <i className="ri-arrow-right-down-line button__icon"></i>
-              </a>
+              </a> */}
+              
             </div>
           </div>
         </section>
