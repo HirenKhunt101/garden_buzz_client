@@ -110,8 +110,8 @@ button:active
 .addToCart{
   display: inline-block;
   padding: 4px 10px;
-  background-color: #d3eee3;
-  /* border: none; */
+  background-color: #12681b;
+  color: white;
   border-radius: 5px;
   cursor: pointer;
   margin-right: 5px;
@@ -130,12 +130,13 @@ button:active
 .removeFromCart{
   display: inline-block;
   padding: 5px 10px;
-  background-color: #c7757530;
+  background-color: #600101d6;
+  color: white;
   border: 1px solid #d9d9d9;
   border-radius: 5px;
   cursor: pointer;
   margin-right: 5px;
-  font-size: 15px;
+  font-size: 14px;
   margin-top: 6px;
   width: 100%;
 }
