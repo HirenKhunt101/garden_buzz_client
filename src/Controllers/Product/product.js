@@ -206,13 +206,15 @@ function Product() {
                   />
                   <div className="productDetails">
                     <h3>{product.Name}</h3>
-                    <p style={{ color: "green" }}>
-                      {getRandomNumber(product.Price)}% off
-                    </p>
-                    <p>Price: ₹{product.Price}</p>
+                    <div className="price-detail">
+                      <p style={{ color: "green" }}>
+                        {getRandomNumber(product.Price)}% off
+                      </p>
+                      <p>Price: ₹{product.Price}</p>
+                    </div>
                     {/* <p>Quantity: {product.ProductQuantity}</p> */}
                     <button className="moreInfo" onClick={() => handleProductDetail(product)}>
-                      More Information
+                      View Details
                     </button>
                     {/* <Link to={`/Chatbox?sellerId=${product.UserId}`}
                       className="moreInfo"
